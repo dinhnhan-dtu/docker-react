@@ -1,0 +1,11 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t nhandd/docker-react -f Dockerfile.dev .
+
+scripts:
+    - docker run -e CI=true nhandd/docker-react npm run test -- --converage
+
+language: generic
